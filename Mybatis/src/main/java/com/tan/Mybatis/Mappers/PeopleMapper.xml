@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tan.Mybatis.Mappers.PeopleMapper">
+	<resultMap type="People" id="peopleResult">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/> 
+	</resultMap>
+
+	<!-- 用where来代表where 语句，用if来判断是否加拼接 ，用choose的when和otherwise来做判断哪个条件写哪个-->
+	<select id="findByNameAndAge" parameterType="Map" resultMap="peopleResult">
+		select * from people
+		<where>
+		<if test="name!=null">
+			name = #{name}
+		</if>
+		<if test="sex!=null">
+		 and sex = #{sex}
+		</if>
+		</where>
+	</select>
+	
+	<select id="findUseChoose" parameterType="Map" resultMap="peopleResult">
+		select * from people
+		<where>
+		<choose>
+		<when test="searchPro=='name'">
+			name = #{val}
+		</when>
+		<otherwise>
+			sex = #{val}
+		</otherwise>
+		</choose>
+		</where>
+	</select>
+
+
+</mapper>

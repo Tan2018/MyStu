@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 引用jdbc的配置 -->
+	<properties resource="jdbc.properties" />
+	<!-- typeAlias是实体类的别名，用来把类指定为一个名，用package标签可以统一管理别名默认为类名 -->
+	<typeAliases>
+	<package name="com.tan.Mybatis.entity"/>
+	<!-- 单个别名指定：<typeAlias alias="Student" type="com.tan.Mybatis.entity.Student"/>--> 
+	</typeAliases>
+	
+	<!-- 环境，可以更改default环境为开发还是测试环境 -->
+	<environments default="development">
+	<environment id="development">
+	<!-- transactionManager：支持两种事物管理器，jdbc是应用程序负责管理数据库连接的生命周期 ，一个是managed是由应用服务器管理-->
+		<transactionManager type="JDBC"></transactionManager>
+		<!-- 数据源类型有：unpooled，pooled，jndi -->
+		<dataSource type="POOLED">
+			<property name="driver" value="${jdbc.driverClassName}" />
+			<property name="url" value="${jdbc.url}" />
+			<property name="username" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+		</dataSource>
+	</environment>
+	<environment id="test">
+		<transactionManager type="JDBC"></transactionManager>
+		<dataSource type="POOLED">
+			<property name="driver" value="${jdbc.driverClassName}" />
+			<property name="url" value="${jdbc.url}" />
+			<property name="username" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+		</dataSource>
+	</environment>
+	</environments>
+	
+	
+	<!-- 指定mapper文件，一般用package来统一管理mapper文件的包 -->
+	<mappers>
+	<package name="com.tan.Mybatis.Mappers"/>
+	<!-- 单独指定一个mapper.xml文件：<mapper resource="com/tan/Mybatis/Mappers/StudentMapper.xml" /> -->
+	</mappers>
+
+</configuration>

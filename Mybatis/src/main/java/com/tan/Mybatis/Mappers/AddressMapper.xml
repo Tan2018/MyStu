@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tan.Mybatis.Mappers.AddressMapper">
+	<resultMap type="Address" id="AddressResult">
+		<result property="id" column="id"/>
+		<result property="sheng" column="sheng"/>
+		<result property="shi" column="shi"/>
+	</resultMap>
+	
+	<!-- 使用一对多或者多对多的表关联情况，使用collection为表关联查询，注意此时传的值为自身主键，即关联表的外键。 -->
+	<resultMap type="Address" id="AddressResult2">
+		<result property="id" column="id"/>
+		<result property="sheng" column="sheng"/>
+		<result property="shi" column="shi"/>
+		<collection property="stus" column="id" select="com.tan.Mybatis.Mappers.StudentMapper.findByAddressId"></collection>
+	</resultMap>
+	
+	<select id="findById" parameterType="Integer" resultMap="AddressResult2">
+		select * from address where id = #{id}
+	</select>
+</mapper>
