@@ -2,13 +2,12 @@ package com.tan.Mybatis.Mappers;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.SelectProvider;
 
 import com.tan.Mybatis.entity.Student;
 
@@ -26,4 +25,19 @@ public interface AnnotationMapper {
 	})
 	public List<Student> find();
 	
+	
+	
+	//用注释来动态sql
+	
+	@InsertProvider(type=StudentDynaSQLProvider.class,method="insertStudentDyna")
+	public int InsertProviderStu(Student student);
+	
+	//用注释来动态查询STUDNET集合
+	@SelectProvider(type=StudentDynaSQLProvider.class,method="findStudents")
+	@Results({
+		@Result(id=true,column = "id", property = "id"),
+		@Result(column = "name" ,property="name"),
+		@Result(column = "age" ,property="age")
+	})
+	public List<Student> findProviderStu(Student student);
 }

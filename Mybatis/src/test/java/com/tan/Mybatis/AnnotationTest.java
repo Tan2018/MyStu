@@ -46,5 +46,27 @@ public class AnnotationTest {
 		}
 	}
 	
+	
+	//测试动态sql插入一个数据。
+	@Test
+	public void insertStuDyna() {
+		logger.info("测试动态插入sql数据");
+		Student student = new Student(12,"动态注释的值");
+		int result = mapper.InsertProviderStu(student);
+		session.commit();
+		logger.info(result);
+	}
+	
+	//测试动态sql插入一个数据。
+		@Test
+		public void findStuDyna() {
+			logger.info("测试动态查询sql数据");
+			Student student = new Student(12,"动态注释的值");
+			List<Student> stus = mapper.findProviderStu(student);
+			for(Student stu:stus) {
+				System.out.println(stu.toString());
+			}
+		}
+	
 
 }
