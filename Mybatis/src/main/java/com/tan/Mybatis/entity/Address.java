@@ -2,6 +2,11 @@ package com.tan.Mybatis.entity;
 
 import java.util.List;
 
+/**
+ * 
+ * @author tan
+ *
+ */
 public class Address {
 	private int id;
 	private String sheng;
