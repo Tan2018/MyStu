@@ -18,9 +18,9 @@ import org.apache.activemq.ActiveMQConnectionFactory;
  */
 public class JMSConsumer {
 
-	private static final String USERNAME=ActiveMQConnection.DEFAULT_USER; // 默认的连接用户名
-	private static final String PASSWORD=ActiveMQConnection.DEFAULT_PASSWORD; // 默认的连接密码
-	private static final String BROKEURL=ActiveMQConnection.DEFAULT_BROKER_URL; // 默认的连接地址
+	private static final String USERNAME=ActiveMQConnection.DEFAULT_USER; // 默认的连接用户名，一般为admin	
+	private static final String PASSWORD=ActiveMQConnection.DEFAULT_PASSWORD; // 默认的连接密码，一般为admin
+	private static final String BROKEURL=ActiveMQConnection.DEFAULT_BROKER_URL; // 默认的连接地址，很一般为"tcp://192.168.1.139:61616"
 	
 	public static void main(String[] args) {
 		ConnectionFactory connectionFactory; // 连接工厂
