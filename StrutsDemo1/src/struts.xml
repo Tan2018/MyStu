@@ -5,8 +5,19 @@
 <struts>
 	<package name="helloworld" extends="struts-default">
 		<action name="hello" class="cn.tan.struts.StrutsAction">
-		<result name="success">helloWorld.jsp</result></action>
+		<result name="success">helloWorld.jsp</result>
+		<result name="error">error.jsp</result></action>
 	
+		<action name="hello2" class="cn.tan.struts.StrutsAction2">
+		<result name="success">helloWorld.jsp</result>
+		<result name="error">error.jsp</result></action>
+	<!-- 使用javaBean类型属性传递 -->
+		<action name="loginBean" class="cn.tan.struts.StrutsForJavaBean">
+		<result name="success">success.jsp</result>
+		<result name="error">error.jsp</result></action>
+	<!-- 使用ModelDriven类型属性传递 -->
+		<action name="model" class="cn.tan.struts.StrutsForModelDriven">
+		<result name="success">helloWorld.jsp</result>
+		<result name="error">error.jsp</result></action>
 	</package>
-
 </struts>
