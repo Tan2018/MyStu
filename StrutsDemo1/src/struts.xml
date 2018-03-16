@@ -19,5 +19,15 @@
 		<action name="model" class="cn.tan.struts.StrutsForModelDriven">
 		<result name="success">helloWorld.jsp</result>
 		<result name="error">error.jsp</result></action>
+		
+	<!-- 使用多个值-->
+		<action name="hobby" class="cn.tan.struts.StrutsMoreValue">
+		<result name="success">helloWorld.jsp</result>
+		<result name="error">error.jsp</result></action>
+	
+	<!-- 使用多个bean-->
+		<action name="student" class="cn.tan.struts.StrutsMoreBean">
+		<result name="success">helloWorld.jsp</result>
+		<result name="error">error.jsp</result></action>
 	</package>
 </struts>
