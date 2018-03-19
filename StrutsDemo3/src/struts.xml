@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="baseInterceptor" extends="struts-default">
+	<interceptors>
+		<interceptor name="interceptorDemo" class="cn.tan.interceptors.InterceptorDemo"></interceptor>
+		<interceptor name="interceptorValidLogin" class="cn.tan.interceptors.InterceptorValidLogin"></interceptor>
+		<!--第七讲:定义一个验证登陆的拦截器栈  -->
+		<interceptor-stack name="ValidInterStack">
+			<interceptor-ref name="interceptorValidLogin"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</interceptor-stack>
+	</interceptors>
+	<!-- 第七讲:设置一个默认的拦截器为ValidInterStack，如果不设置，默认为继承的struts-default.xml里面的 defaultStack-->
+	<default-interceptor-ref name="ValidInterStack"></default-interceptor-ref>
+	
+	<!--第六讲：一般在action里面使用拦截器 
+	<action name="demo" class="cn.tan.struts.StrutsInterceptor">
+		<result name="success">success.jsp</result>
+		<interceptor-ref name="interceptorDemo" ></interceptor-ref>
+	</action> -->
+	<!-- 定义全局result的跳转，把所有错误信息统一跳转到error.jsp界面 -->
+	<global-results>
+		<result name="error">error.jsp</result>
+	</global-results>
+	
+	<action name="demo" class="cn.tan.struts.StrutsInterceptor">
+		<result name="success">success.jsp</result>
+		
+		<interceptor-ref name="interceptorDemo" ></interceptor-ref>
+		<interceptor-ref name="defaultStack"></interceptor-ref>
+	</action>
+	<!-- 注意，action不能使用login关键字。实际上，login是struts里的一个保留字，不能使用 -->
+	<action name="userlogin" class="cn.tan.struts.LoginAction" >
+		<result name="success">success.jsp</result>
+		<!-- 此处引用defaultStack就不会使用通用的ValidInterStack拦截栈，action一般会先判断有没有引用栈，如果没有则引用全局栈 -->
+		<interceptor-ref name="defaultStack"></interceptor-ref>
+	</action>
+	
+	<!-- 第七讲：一般在全局拦截器 ，不设置默认为使用全局拦截器栈-->
+	<action name="showGirl" class="cn.tan.struts.ShowGirlsAction" >
+		<result name="success">showgirl.jsp</result>
+		<!-- 这里没有设置栈，action会在全局中找到ValidInterStack为默认栈 -->
+		<!-- <interceptor-ref name="interceptorValidLogin"></interceptor-ref> -->
+	</action>
+	</package>
+<!-- 基础拦截器 -->
+	
+</struts>
