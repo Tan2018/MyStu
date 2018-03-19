@@ -1,0 +1,19 @@
+struts学习第十讲第十一讲：Struts2 控制标签
+	Ifelse 标签：条件判断标签；
+	Iterator 标签：遍历标签；
+	Append 标签：叠加标签；
+	Generator 标签：分隔标签；
+	Merge 标签：组合标签；
+	Sort 标签：排序标签；
+	Subset 标签：截取标签；
+
+Strut2 界面标签
+	Form 标签：表单提交标签；
+	Text 标签：文本标签；
+	Radios 标签：单选标签；
+	Checkboxlist 标签：复选框标签；
+	Select 标签：下拉框标签；
+
+其他标签
+	Updownselect 标签；
+	Optiontransferselect 标签；
