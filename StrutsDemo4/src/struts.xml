@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<!-- 由于安全原因使用静态方法要配置允许 -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	<package name="ognl" extends="struts-default">
+	<action name="ognl" class="cn.tan.action.OGNLAction">
+		<result name="success">success.jsp</result>
+	</action>
+	</package>
+<!-- 基础拦截器 -->
+	
+</struts>

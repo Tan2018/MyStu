@@ -1,0 +1,22 @@
+struts学习第八讲第九讲：值栈与OGNL
+
+第二节：OGNL 引入
+OGNL 是对象图导航语言Object-Graph Navigation Language 的缩写，它是一种功能强大的表达式语言。
+OGNL 访问ValueStack 数据
+<s:property value=”account” />
+OGNL 访问ActionContext 数据
+访问某个范围下的数据要用#
+#parameters 请求参数request.getParameter(...)；
+#request 请求作用域中的数据request.getAttribute(...)；
+#session 会话作用域中的数据session.getAttribute(...)；
+#application 应用程序作用域中的数据application.getAttribute(...)；
+#attr 按照page request session application 顺序查找值
+
+第三节：OGNL 访问复杂对象
+1，访问javaBean 对象；
+2，访问集合对象；
+3，访问Map 对象；
+
+第四节：OGNL 访问静态方法和属性
+1，访问静态属性；
+2，访问静态方法；<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
