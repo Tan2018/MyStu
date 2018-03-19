@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+<!-- struts配置 -->
+<!-- package只是用来把action分开处理，这里用来区分前台后台 -->
+	<package name="foreground" namespace="/fore" extends="struts-default">
+		<action name="stuentList" class = "cn.tan.struts.StrutsFore">
+			<result name="success">${pageContext.request.contextPath}/success.jsp</result>
+		</action>
+	</package>
+	<package name="background" namespace="/back" extends="struts-default">
+		<action name="stuentList" class = "cn.tan.struts.StrutsBack" method="show">
+			<result name="success">${pageContext.request.contextPath}/success.jsp</result>
+		</action>
+	</package>
+	<!-- 虚拟的包，以后用来继承用的，不能写action -->
+	<package name="infoFilter" abstract="true"></package>
+	<!-- 分模块配置，分模块配置方法 -->
+	<include file="struts-grade.xml" ></include>
+</struts>

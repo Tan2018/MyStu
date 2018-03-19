@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+<!-- 第四讲：子模块处理struts配置 -->
+
+	<!-- 开启动态方法调用，不过以后引入spring时候会出问题，不推荐 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	
+
+	<package name="grades"  extends="struts-default">
+		<!-- <global-allowed-methods>insert,update</global-allowed-methods> -->
+		<!-- stuts2.5必须要加上allowed-methods标签，然后其他版本不能识别struts这个标签，一定要头中的2.0全部换成2.5才不报错 
+		可以使用regex：.*去代表所有的方法-->
+		<!-- <global-allowed-methods>insert,update</global-allowed-methods> -->
+		<global-allowed-methods>regex:.*</global-allowed-methods>
+	
+		<action name="grade" class = "cn.tan.struts.StrutsGrade">
+			<result name="success">${pageContext.request.contextPath}/success.jsp</result>
+		</action> 
+		
+		<!-- 第四讲，使用通配符*，然后{1}代表第一个通配符的值 ,{2}代表第二个值-->
+		<action name="grade_*" class = "cn.tan.struts.StrutsGrade" method="{1}" >
+			<result name="success">success.jsp</result>
+			<!-- stuts2.5必须要加上allowed-methods标签，然后其他版本不能识别struts这个标签，一定要头中的2.0全部换成2.5才不报错 -->
+			<!-- <allowed-methods>insert,update</allowed-methods> --> 
+			<allowed-methods>regex:.*</allowed-methods>     
+		</action>
+		
+		<!-- 同时对两个值进行通配符处理 -->
+		<action name="*__*" class="cn.tan.struts.Struts{1}" method="{2}">
+	  		<result name="success">success.jsp</result>
+	  		<allowed-methods>insert,update</allowed-methods>  
+  		</action>
+	</package>
+	
+</struts>
