@@ -7,7 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import cn.tan.model.Student;
 
 /**
- * 第三讲支持多个值
+ * 第三讲支持多个bean
  * @author tan
  *
  */
@@ -15,10 +15,6 @@ public class StrutsMoreBean extends ActionSupport{
 	
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Student> students;
-	
-
-
-
 	public ArrayList<Student> getStudents() {
 		return students;
 	}
@@ -26,7 +22,6 @@ public class StrutsMoreBean extends ActionSupport{
 	public void setStudents(ArrayList<Student> students) {
 		this.students = students;
 	}
-
 
 	@Override
 	public String execute() throws Exception {
