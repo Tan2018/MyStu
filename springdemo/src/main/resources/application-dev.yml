@@ -1,0 +1,15 @@
+
+server:
+  port: 8081
+  servlet:
+      context-path: /tasher
+
+say: hello
+content: say${say}
+
+girl:
+  age: 18
+  cupSize: B
+
+
+
