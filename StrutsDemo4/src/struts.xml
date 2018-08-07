@@ -11,6 +11,4 @@
 		<result name="success">success.jsp</result>
 	</action>
 	</package>
-<!-- 基础拦截器 -->
-	
 </struts>
